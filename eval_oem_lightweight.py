@@ -27,8 +27,8 @@ data = prepare_data(img_file, label_file)
 
 def main():
     # load network
-    # model = sparsemask("models/SparseMask/mask_thres_0.001.npy", "models/SparseMask/checkpoint_63750.pth.tar")
-    model = fasterseg("models/FasterSeg/arch_1.pt", "models/FasterSeg/weights1.pt")
+    model = sparsemask("models/SparseMask/mask_thres_0.001.npy", "models/SparseMask/checkpoint_63750.pth.tar")
+    # model = fasterseg("models/FasterSeg/arch_1.pt", "models/FasterSeg/weights1.pt")
 
     # check number of parameters and flops
     flops, params = profile(model["model"], inputs=(torch.randn(1, 3, 1024, 1024),), verbose=False)
