@@ -1,4 +1,3 @@
-import os
 import torch
 from thop import profile
 from config import config
@@ -7,22 +6,9 @@ from evaluation_tools.utils import prepare_data
 from oem_lightweight import sparsemask, fasterseg
 
 
-def get_data_files(data_dir, test_split):
-    import random
-    with open(test_split, 'r') as f:
-        test_files = f.readlines()
-
-    img, label = random.choice(test_files).strip().split(" ")
-    img = os.path.join(data_dir, img)
-    label = os.path.join(data_dir, label)
-
-    return img, label
-
-
-data_dir = "/home/cliffbb/OpenEarthMap/LULC-RIKEN-Integrated/"
-test_split = "/home/cliffbb/OpenEarthMap/LULC-RIKEN-Integrated/split_files/test_fns.txt"
-img_file, label_file = get_data_files(data_dir, test_split)
-data = prepare_data(img_file, label_file)
+# get data files: image and label files
+img_file = "demo_data/images/palu_8.tif"
+label_file = "demo_data/labels/palu_8.tif"
 
 
 def main():
@@ -31,8 +17,11 @@ def main():
     # model = fasterseg("models/FasterSeg/arch_1.pt", "models/FasterSeg/weights1.pt")
 
     # check number of parameters and flops
-    flops, params = profile(model["model"], inputs=(torch.randn(1, 3, 1024, 1024),), verbose=False)
-    print("params = %fMB, FLOPs = %fGB" % (params / 1e6, flops / 1e9))
+    flop, params = profile(model["model"], inputs=(torch.randn(1, 3, 1024, 1024),), verbose=False)
+    print("Params = %fMB, FLOP = %fGB" % (params / 1e6, flop / 1e9))
+
+    # prepare the data
+    data = prepare_data(img_file, label_file)
 
     # init evaluator
     evaluator = SegEvaluator(config, data, model)
