@@ -8,11 +8,11 @@
 # json
 *.json
 # images
-*.jpg
-*.png
-*.gif
-*.tif
-*.tiff
+#*.jpg
+#*.png
+#*.gif
+#*.tif
+#*.tiff
 # Mkdocs
 # /docs/
 /mkdocs/docs/temp
