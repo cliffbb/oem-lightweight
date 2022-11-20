@@ -21,7 +21,7 @@ def add_path(path):
     if path not in sys.path:
         sys.path.insert(0, path)
 
-add_path(osp.join(C.root_dir, "evaluation_tools"))
+add_path(osp.join(C.root_dir, "oem_lightweight"))
 add_path(osp.join(C.root_dir, "fasterseg_api"))
 add_path(osp.join(C.root_dir, "sparsemask_api"))
 

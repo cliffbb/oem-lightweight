@@ -2,9 +2,9 @@ import torch
 from thop import profile
 
 from config import config
-from evaluation_tools.evaluator import SegEvaluator
-from evaluation_tools.utils import prepare_data
-from oem_lightweight import sparsemask, fasterseg
+from oem_lightweight.evaluator import SegEvaluator
+from oem_lightweight.utils import prepare_data
+from oem_lightweight.model import sparsemask, fasterseg
 
 
 def main(args):
