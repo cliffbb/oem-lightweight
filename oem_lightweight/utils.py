@@ -1,6 +1,6 @@
-import numpy as np
 import cv2
 import os
+import numpy as np
 
 np.seterr(divide='ignore', invalid='ignore')
 

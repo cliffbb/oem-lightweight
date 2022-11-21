@@ -1,5 +1,6 @@
 import torch
 import numpy as np
+
 from config import config
 from fasterseg_api.model_seg import Network_Multi_Path_Infer as Network
 from sparsemask_api.sparse_mask_eval_mode import SparseMask

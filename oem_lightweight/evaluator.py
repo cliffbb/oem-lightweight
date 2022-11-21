@@ -1,12 +1,10 @@
 #!/usr/bin/env python3
 # encoding: utf-8
-from utils import *
 import torch
 import matplotlib.pyplot as plt
-import os
-import cv2
-import numpy as np
 from torchvision import transforms
+
+from utils import *
 
 
 class SegEvaluator(object):
