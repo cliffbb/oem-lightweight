@@ -9,7 +9,7 @@ from oem_lightweight.model import sparsemask, fasterseg
 
 def main(args):
     # load network
-    if args.model.lower() == "sparemask":
+    if args.model.lower() == "sparsemask":
         model = sparsemask(mask=args.arch, weights=args.pretrained_weights)
     elif args.model.lower() == "fasterseg":
         model = fasterseg(arch=args.arch, weights=args.pretrained_weights)
@@ -53,5 +53,4 @@ if __name__ == "__main__":
     parser.add_argument("--save_dir", type=str, help="directory for saving predictions")
 
     args = parser.parse_args()
-
     main(args)

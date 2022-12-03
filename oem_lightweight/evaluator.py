@@ -2,6 +2,7 @@
 # encoding: utf-8
 import torch
 import matplotlib.pyplot as plt
+import matplotlib.patches as mpatches
 from torchvision import transforms
 
 from utils import *
@@ -88,6 +89,10 @@ class SegEvaluator(object):
             ax.text(0.16, -0.02, 'Image', horizontalalignment='center', verticalalignment='top', transform=ax.transAxes)
             ax.text(0.5, -0.02, 'Segmentation', horizontalalignment='center', verticalalignment='top', transform=ax.transAxes)
             ax.text(0.83, -0.02, 'Reference', horizontalalignment='center', verticalalignment='top', transform=ax.transAxes)
+
+        # create a patch for every color and use for legend
+        patches = [mpatches.Patch(facecolor=np.array(self.class_colors[i]) / 255., label=self.class_names[i], linewidth=3) for i in range(8)]
+        plt.legend(handles=patches, bbox_to_anchor=(1.05, 1), loc=2, borderaxespad=0., fontsize='large')
 
         plt.yticks([])
         plt.xticks([])

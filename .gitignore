@@ -27,9 +27,12 @@ node_modules/
 search-*/
 eval-*/
 
-# resource temp folder
-tests/resources/temp/*
-!tests/resources/temp/.gitkeep
+# resource empty folder
+models/FasterSeg/*
+!models/FasterSeg/.gitkeep
+models/SparseMask/*
+!models/SparseMask/.gitkeep
+results/*
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
